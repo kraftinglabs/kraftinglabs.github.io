@@ -9,9 +9,19 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="color-scheme" content="light dark" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
         <title>Krafting Labs | Home</title>
 
         <style>
+            /* @font-face { */
+            /*     font-family: "JetBrainsMonoNerdFont"; */
+            /*     src: url("/fonts/JetBrainsMonoNerdFontMono-Regular.woff2") format("woff2"); */
+            /*     font-weight: 400; */
+            /*     font-style: normal; */
+            /* } */
             :root {
                 /* Tell the browser the site supports both modes */
                 color-scheme: light dark;
@@ -21,17 +31,22 @@
                 --bg-dark: #171615;
                 /* --border: #f2d7c0; */
 
+                --nav-bg-light: #f2f0ec;
+                --nav-bg-dark: #1e1d1b;
+
                 --text-light: #2f261f;
                 --text-dark: #d6d5d4;
+                --logo-whisker: light-dark(#121212, #fafafa)
                 /* --muted: #6b5c50; */
             }
 
             body {
-                background: light-dark(var(--bg-light), var(--bg-dark));
+                background: light-dark(var(--nav-bg-light), var(--nav-bg-dark));
                 color: light-dark(var(--text-light), var(--text-dark));
             }
 
             * {
+                margin: 0;
                 font-family:
                     system-ui,
                     -apple-system,
@@ -40,8 +55,6 @@
                     sans-serif;
             }
 
-            
-
             .logo {
                 display: flex;
                 width: 100%;
@@ -49,34 +62,36 @@
                 height: 176px;
             }
 
+            .brand {
+                font-family: "JetBrainsMono Nerd Font", "Jet Brains Mono", "Fira Code", monospace;
+                font-weight: 600;
+            }
+
             .hero {
+                /* min-height: 100vh; */
                 min-height: 100vh;
+                width: 100%;
 
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 align-items: center;
+
+                background: light-dark(var(--bg-light), var(--bg-dark));
+                color: light-dark(var(--text-light), var(--text-dark));
 
                 text-align: center;
 
-                max-width: 900px;
-                margin: 0 auto;
-
                 padding: 8rem 2rem 3rem;
                 box-sizing: border-box;
-            }
-
-            .hero-title {
-                font-size: clamp(1.8rem, 4vw, 3rem);
-                line-height: 1.05;
-                font-weight: 800;
-                margin: 0;
             }
 
             .hero-text {
                 margin-top: 1.5rem;
                 max-width: 700px;
 
-                font-size: 0.85rem;
+                font-size: 1.25rem;
+                font-size: clamp(1.0rem, 1.4vw, 1.25rem);
                 line-height: 1.4;
                 opacity: 0.8;
             }
@@ -86,6 +101,7 @@
                 align-items: center;
                 justify-content: center;
 
+                margin-top: 2rem;
                 padding: 0.7rem 1.2rem;
 
                 background: var(--primary);
@@ -96,7 +112,6 @@
             }
 
             .logo {
-                margin-top: auto;
                 padding-top: 4rem;
             }
 
@@ -105,27 +120,50 @@
                 height: 176px;
             }
 
-            header {
-                padding: .5rem 1.5rem;
+            nav {
+                position: fixed;
+                width: 100%;
+
+                background: light-dark(var(--nav-bg-light), var(--nav-bg-dark));
             }
 
             .navbar {
-                display: flex;
                 position: relative
                 width: 100%;
-                justify-content: space-between
+
+                display: flex;
+                padding: 1rem 1.5rem;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .nav-curve-bottom {
+                position: relative;
+                width: 100%;
+                height: 2rem;
+                background: light-dark(var(--bg-light), var(--bg-dark));
+                border-radius: 1rem 1rem 0 0;
             }
 
             .nav-link {
                 text-decoration: none;
                 color: var(--primary);
             }
+
+            .ascii-logo {
+                font-family: "jetbrains mono", monospace;
+                white-space: pre;
+                line-height: 1;
+                font-size: clamp(7px, 1.0vw, 4rem);
+                color: var(--primary);
+            }
+
         </style>
     </head>
 
     <body>
-        <header>
-            <nav class="navbar">
+        <nav>
+            <div class="navbar">
                 <div class="brand">Krafting Labs</div>
 
                 <a
@@ -136,14 +174,26 @@
                 >
                     GitHub
                 </a>
-            </nav>
-        </header>
+            </div>
+            <div class="nav-curve-bottom"></div>
+        </nav>
 
         <main class="hero">
-            <h1 class="hero-title">
-                Ideas into Reality.<br />
-                Curiosity into Impact.
-            </h1>
+            <pre class="ascii-logo">
+██╗  ██╗██████╗  █████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗ 
+ ██║ ██╔╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝  
+ █████╔╝ ██████╔╝███████║█████╗     ██║   ██║██╔██╗ ██║██║  ███╗ 
+ ██╔═██╗ ██╔══██╗██╔══██║██╔══╝     ██║   ██║██║╚██╗██║██║   ██║ 
+ ██║  ██╗██║  ██║██║  ██║██║        ██║   ██║██║ ╚████║╚██████╔╝ 
+ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝  
+
+██╗      █████╗ ██████╗ ███████╗
+██║     ██╔══██╗██╔══██╗██╔════╝
+██║     ███████║██████╔╝███████╗
+██║     ██╔══██║██╔══██╗╚════██║
+███████╗██║  ██║██████╔╝███████║
+╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝
+            </pre>
 
             <p class="hero-text">
                 Krafting Labs is a community of builders, engineers, and
@@ -169,7 +219,7 @@
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <rect x="32" y="32" width="288" height="288" fill="#DCA800"
+                    <rect x="31" y="33" width="290" height="288" fill="#FFAB75"
                     ></rect>
                     <rect x="96" y="160" width="32" height="32" fill="#537C24"
                     ></rect>
@@ -178,31 +228,32 @@
                         height="32"
                         transform="matrix(-1 0 0 1 256 160)"
                         fill="#537C24"></rect>
+                    <!-- <path d="M64 160V192H0V160H64Z" fill="var(--logo-whisker)"></path> -->
                     <path d="M64 160V192H0V160H64Z" fill="#1E1E1E"></path>
                     <path d="M64 224V256H0V224H64Z" fill="#1E1E1E"></path>
                     <path d="M352 224V256H288V224H352Z" fill="#1E1E1E"></path>
                     <path d="M352 160V192H288V160H352Z" fill="#1E1E1E"></path>
-                    <path d="M160 352H64V320H160V352Z" fill="#FFD343"></path>
-                    <path d="M288 352H192V320H288V352Z" fill="#FFD343"></path>
-                    <path d="M64 320H32V288H64V320Z" fill="#FFD343"></path>
-                    <path d="M320 320H288V288H320V320Z" fill="#FFD343"></path>
-                    <path d="M32 288H0V256H32V288Z" fill="#FFD343"></path>
-                    <path d="M352 288H320V256H352V288Z" fill="#FFD343"></path>
-                    <path d="M32 224H0V192H32V224Z" fill="#FFD343"></path>
-                    <path d="M352 224H320V192H352V224Z" fill="#FFD343"></path>
+                    <path d="M160 352H64V320H160V352Z" fill="#FFBE94"></path>
+                    <path d="M288 352H192V320H288V352Z" fill="#FFBE94"></path>
+                    <path d="M64 320H32V288H64V320Z" fill="#FFBE94"></path>
+                    <path d="M320 320H288V288H320V320Z" fill="#FFBE94"></path>
+                    <path d="M32 288H0V256H32V288Z" fill="#FFBE94"></path>
+                    <path d="M352 288H320V256H352V288Z" fill="#FFBE94"></path>
+                    <path d="M32 224H0V192H32V224Z" fill="#FFBE94"></path>
+                    <path d="M352 224H320V192H352V224Z" fill="#FFBE94"></path>
                     <path
                         d="M256 64H192V96H224V128H192V192H160V128H128V96H160V64H96V32H256V64Z"
-                        fill="#FFD343"></path>
-                    <path d="M32 160H0V128H32V160Z" fill="#FFD343"></path>
-                    <path d="M352 160H320V128H352V160Z" fill="#FFD343"></path>
-                    <path d="M64 128H32V96H64V128Z" fill="#FFD343"></path>
-                    <path d="M320 128H288V96H320V128Z" fill="#FFD343"></path>
-                    <path d="M32 96H0V32H32V96Z" fill="#FFD343"></path>
-                    <path d="M96 96H64V64H96V96Z" fill="#FFD343"></path>
-                    <path d="M288 96H256V64H288V96Z" fill="#FFD343"></path>
-                    <path d="M352 96H320V32H352V96Z" fill="#FFD343"></path>
-                    <path d="M96 32H32V0H96V32Z" fill="#FFD343"></path>
-                    <path d="M320 0V32H256V0H320Z" fill="#FFD343"></path>
+                        fill="#FFBE94"></path>
+                    <path d="M32 160H0V128H32V160Z" fill="#FFBE94"></path>
+                    <path d="M352 160H320V128H352V160Z" fill="#FFBE94"></path>
+                    <path d="M64 128H32V96H64V128Z" fill="#FFBE94"></path>
+                    <path d="M320 128H288V96H320V128Z" fill="#FFBE94"></path>
+                    <path d="M32 96H0V32H32V96Z" fill="#FFBE94"></path>
+                    <path d="M96 96H64V64H96V96Z" fill="#FFBE94"></path>
+                    <path d="M288 96H256V64H288V96Z" fill="#FFBE94"></path>
+                    <path d="M352 96H320V32H352V96Z" fill="#FFBE94"></path>
+                    <path d="M96 32H32V0H96V32Z" fill="#FFBE94"></path>
+                    <path d="M320 0V32H256V0H320Z" fill="#FFBE94"></path>
                     <rect x="160" y="288" width="32" height="32" fill="white"
                     ></rect>
                     <path d="M192 304V320H160V304H192Z" fill="#CC4646"></path>
