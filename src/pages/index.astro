@@ -1,0 +1,222 @@
+---
+// src/pages/index.astro
+// Demo: browser accent-color + prefers-color-scheme in Astro
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="color-scheme" content="light dark" />
+        <title>Krafting Labs | Home</title>
+
+        <style>
+            :root {
+                /* Tell the browser the site supports both modes */
+                color-scheme: light dark;
+                --primary: #ff8c42;
+
+                --bg-light: #faf8f5;
+                --bg-dark: #171615;
+                /* --border: #f2d7c0; */
+
+                --text-light: #2f261f;
+                --text-dark: #d6d5d4;
+                /* --muted: #6b5c50; */
+            }
+
+            body {
+                background: light-dark(var(--bg-light), var(--bg-dark));
+                color: light-dark(var(--text-light), var(--text-dark));
+            }
+
+            * {
+                font-family:
+                    system-ui,
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    Roboto,
+                    sans-serif;
+            }
+
+            
+
+            .logo {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                height: 176px;
+            }
+
+            .hero {
+                min-height: 100vh;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                text-align: center;
+
+                max-width: 900px;
+                margin: 0 auto;
+
+                padding: 8rem 2rem 3rem;
+                box-sizing: border-box;
+            }
+
+            .hero-title {
+                font-size: clamp(1.8rem, 4vw, 3rem);
+                line-height: 1.05;
+                font-weight: 800;
+                margin: 0;
+            }
+
+            .hero-text {
+                margin-top: 1.5rem;
+                max-width: 700px;
+
+                font-size: 0.85rem;
+                line-height: 1.4;
+                opacity: 0.8;
+            }
+
+            .hero-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 0.7rem 1.2rem;
+
+                background: var(--primary);
+                color: white;
+
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .logo {
+                margin-top: auto;
+                padding-top: 4rem;
+            }
+
+            .logo svg {
+                width: 176px;
+                height: 176px;
+            }
+
+            header {
+                padding: .5rem 1.5rem;
+            }
+
+            .navbar {
+                display: flex;
+                position: relative
+                width: 100%;
+                justify-content: space-between
+            }
+
+            .nav-link {
+                text-decoration: none;
+                color: var(--primary);
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="brand">Krafting Labs</div>
+
+                <a
+                    href="https://github.com/kraftinglabs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="nav-link"
+                >
+                    GitHub
+                </a>
+            </nav>
+        </header>
+
+        <main class="hero">
+            <h1 class="hero-title">
+                Ideas into Reality.<br />
+                Curiosity into Impact.
+            </h1>
+
+            <p class="hero-text">
+                Krafting Labs is a community of builders, engineers, and
+                technology enthusiasts creating open-source software, sharing
+                practical engineering knowledge, and exploring modern
+                technologies together.
+            </p>
+
+            <a
+                href="https://github.com/kraftinglabs"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hero-button"
+            >
+                Explore Our Projects
+            </a>
+
+            <div class="logo">
+                <svg
+                    width="176"
+                    height="176"
+                    viewBox="0 0 352 352"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <rect x="32" y="32" width="288" height="288" fill="#DCA800"
+                    ></rect>
+                    <rect x="96" y="160" width="32" height="32" fill="#537C24"
+                    ></rect>
+                    <rect
+                        width="32"
+                        height="32"
+                        transform="matrix(-1 0 0 1 256 160)"
+                        fill="#537C24"></rect>
+                    <path d="M64 160V192H0V160H64Z" fill="#1E1E1E"></path>
+                    <path d="M64 224V256H0V224H64Z" fill="#1E1E1E"></path>
+                    <path d="M352 224V256H288V224H352Z" fill="#1E1E1E"></path>
+                    <path d="M352 160V192H288V160H352Z" fill="#1E1E1E"></path>
+                    <path d="M160 352H64V320H160V352Z" fill="#FFD343"></path>
+                    <path d="M288 352H192V320H288V352Z" fill="#FFD343"></path>
+                    <path d="M64 320H32V288H64V320Z" fill="#FFD343"></path>
+                    <path d="M320 320H288V288H320V320Z" fill="#FFD343"></path>
+                    <path d="M32 288H0V256H32V288Z" fill="#FFD343"></path>
+                    <path d="M352 288H320V256H352V288Z" fill="#FFD343"></path>
+                    <path d="M32 224H0V192H32V224Z" fill="#FFD343"></path>
+                    <path d="M352 224H320V192H352V224Z" fill="#FFD343"></path>
+                    <path
+                        d="M256 64H192V96H224V128H192V192H160V128H128V96H160V64H96V32H256V64Z"
+                        fill="#FFD343"></path>
+                    <path d="M32 160H0V128H32V160Z" fill="#FFD343"></path>
+                    <path d="M352 160H320V128H352V160Z" fill="#FFD343"></path>
+                    <path d="M64 128H32V96H64V128Z" fill="#FFD343"></path>
+                    <path d="M320 128H288V96H320V128Z" fill="#FFD343"></path>
+                    <path d="M32 96H0V32H32V96Z" fill="#FFD343"></path>
+                    <path d="M96 96H64V64H96V96Z" fill="#FFD343"></path>
+                    <path d="M288 96H256V64H288V96Z" fill="#FFD343"></path>
+                    <path d="M352 96H320V32H352V96Z" fill="#FFD343"></path>
+                    <path d="M96 32H32V0H96V32Z" fill="#FFD343"></path>
+                    <path d="M320 0V32H256V0H320Z" fill="#FFD343"></path>
+                    <rect x="160" y="288" width="32" height="32" fill="white"
+                    ></rect>
+                    <path d="M192 304V320H160V304H192Z" fill="#CC4646"></path>
+                    <path d="M192 352H160V320H192V352Z" fill="#624B00"></path>
+                    <path d="M160 320H128V288H160V320Z" fill="#624B00"></path>
+                    <path d="M224 320H192V288H224V320Z" fill="#624B00"></path>
+                    <path
+                        d="M224 224V256H192V288H160V256H128V224H224Z"
+                        fill="#624B00"></path>
+                    <path d="M320 32V96H288V64H256V32H320Z" fill="#624B00"
+                    ></path>
+                    <path d="M96 32V64H64V96H32V32H96Z" fill="#624B00"></path>
+                </svg>
+            </div>
+        </main>
+    </body>
+</html>
